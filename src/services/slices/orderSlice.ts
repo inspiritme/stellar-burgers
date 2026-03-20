@@ -14,15 +14,17 @@ const initialState: CurrentOrderState = {
   error: null
 };
 
-// Получаем заказ по номеру
 export const fetchOrderByNumber = createAsyncThunk(
   'order/fetchByNumber',
   async (number: number, { rejectWithValue }) => {
     try {
       const res = await getOrderByNumberApi(number);
-      return res.orders[0]; // API возвращает массив, берём первый элемент
-    } catch (err: any) {
-      return rejectWithValue(err.message || 'Ошибка получения заказа');
+      return res.orders[0];
+    } catch (err) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message);
+      }
+      return rejectWithValue('Ошибка получения заказа');
     }
   }
 );
