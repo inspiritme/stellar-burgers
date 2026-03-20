@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { FC, SyntheticEvent, useState, useEffect } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { registration } from '@slices';
 import { useDispatch, useSelector } from '@store';
@@ -11,37 +11,28 @@ export const Register: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const error = useSelector((state) => state.user.error);
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    // dispatch(
-    //   registration({
-    //     name: userName,
-    //     email,
-    //     password
-    //   })
-    // )
-    //   .unwrap()
-    //   .then(() => navigate('/'));
-    try {
-      dispatch(
-        registration({
-          name: userName,
-          email,
-          password
-        })
-      ).unwrap();
-
-      navigate('/');
-    } catch (err) {
-      // ничего делать не нужно —
-      // ошибка уже лежит в state.user.error
-    }
+    dispatch(
+      registration({
+        name: userName,
+        email,
+        password
+      })
+    );
   };
 
   return (
     <RegisterUI
-      errorText={error ?? undefined}
+      errorText={error ?? ''}
       email={email}
       userName={userName}
       password={password}

@@ -8,7 +8,7 @@ import {
   TRegisterData,
   updateUserApi
 } from '@api';
-import { setCookie, deleteCookie, getCookie } from '../../utils/cookie';
+import { setCookie, deleteCookie } from '../../utils/cookie';
 import { TUser } from '@utils-types';
 
 interface UserState {
@@ -32,9 +32,19 @@ export const registration = createAsyncThunk<
 >('auth/registration', async (data, { rejectWithValue }) => {
   try {
     const res = await registerUserApi(data);
+    localStorage.setItem('refreshToken', res.refreshToken);
+    setCookie('accessToken', res.accessToken);
     return res;
-  } catch (err: any) {
-    return rejectWithValue(err.message || 'Ошибка при регистрации');
+  } catch (err) {
+    const message =
+      err instanceof Error
+        ? err.message
+        : typeof err === 'string'
+          ? err
+          : err && typeof err === 'object' && 'message' in err
+            ? (err as { message: string }).message
+            : 'Ошибка регистрации';
+    return rejectWithValue(message);
   }
 });
 
@@ -44,8 +54,11 @@ export const updateUser = createAsyncThunk(
     try {
       const res = await updateUserApi(userData);
       return res.user;
-    } catch (err: any) {
-      return rejectWithValue(err.message);
+    } catch (err) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message);
+      }
+      return rejectWithValue('Ошибка обновления данных');
     }
   }
 );
@@ -65,8 +78,11 @@ export const loginUser = createAsyncThunk<
     localStorage.setItem('refreshToken', res.refreshToken);
     setCookie('accessToken', res.accessToken);
     return res.user;
-  } catch (err: any) {
-    return rejectWithValue(err.message || 'Ошибка авторизации');
+  } catch (err) {
+    if (err instanceof Error) {
+      return rejectWithValue(err.message);
+    }
+    return rejectWithValue('Ошибка авторизации');
   }
 });
 
@@ -78,8 +94,11 @@ export const logoutUser = createAsyncThunk(
       localStorage.removeItem('refreshToken');
       deleteCookie('accessToken');
       return res;
-    } catch (err: any) {
-      return rejectWithValue(err.message || 'Произошла ошибка');
+    } catch (err) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message);
+      }
+      return rejectWithValue('Ошибка выхода');
     }
   }
 );
@@ -101,8 +120,6 @@ const userSlice = createSlice({
       .addCase(registration.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
-        setCookie('accessToken', action.payload.accessToken);
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
       })
       .addCase(registration.rejected, (state, action) => {
         state.isLoading = false;
