@@ -1,0 +1,205 @@
+  console.log
+    {
+      ingredients: { ingredients: [], isIngredientsLoading: false, error: null },
+      burgerConstructor: {
+        constructorItems: { bun: null, ingredients: [] },
+        orderRequest: false,
+        orderModalData: null
+      },
+      user: { user: null, isAuthChecked: false, isLoading: false, error: null },
+      feed: { orders: [], total: 0, totalToday: 0 },
+      order: { currentOrder: null, loading: false, error: null },
+      profile: { orders: [] }
+    }
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:7:13)
+
+FAIL src/services/reducers/index.test.tsx
+  rootReducer
+    × вызываем rootReducer и проверяем initialState (37 ms)
+
+  ● rootReducer › вызываем rootReducer и проверяем initialState
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 3
+
+      Object {
+    -   "items": Array [],
+    -   "loading": false,
+    +   "error": null,
+    +   "ingredients": Array [],
+    +   "isIngredientsLoading": false,
+      }
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m     [90m// Можно проверить начальные значения каждого слайса[39m
+    [31m[1m>[22m[39m[90m 17 |[39m     expect(state[33m.[39mingredients)[33m.[39mtoEqual({ items[33m:[39m [][33m,[39m loading[33m:[39m [36mfalse[39m })[33m;[39m
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 18 |[39m     [90m// expect(state.constructor).toEqual({ items: [] });[39m
+     [90m 19 |[39m     [90m// expect(state.user).toEqual({ isLoggedIn: false, profile: null });[39m
+     [90m 20 |[39m   })[0m
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:17:31)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.474 s
+Ran all test suites related to changed files.
+
+  console.log
+    {
+      ingredients: { ingredients: [], isIngredientsLoading: false, error: null },
+      burgerConstructor: {
+        constructorItems: { bun: null, ingredients: [] },
+        orderRequest: false,
+        orderModalData: null
+      },
+      user: { user: null, isAuthChecked: false, isLoading: false, error: null },
+      feed: { orders: [], total: 0, totalToday: 0 },
+      order: { currentOrder: null, loading: false, error: null },
+      profile: { orders: [] }
+    }
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:7:13)
+
+FAIL src/services/reducers/index.test.tsx
+  rootReducer
+    × вызываем rootReducer и проверяем initialState (41 ms)
+
+  ● rootReducer › вызываем rootReducer и проверяем initialState
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 3
+
+      Object {
+    -   "items": Array [],
+    -   "loading": false,
+    +   "error": null,
+    +   "ingredients": Array [],
+    +   "isIngredientsLoading": false,
+      }
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m     [90m// Можно проверить начальные значения каждого слайса[39m
+    [31m[1m>[22m[39m[90m 17 |[39m     expect(state[33m.[39mingredients)[33m.[39mtoEqual({ items[33m:[39m [][33m,[39m loading[33m:[39m [36mfalse[39m })
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 18 |[39m     [90m// expect(state.constructor).toEqual({ items: [] });[39m
+     [90m 19 |[39m     [90m// expect(state.user).toEqual({ isLoggedIn: false, profile: null });[39m
+     [90m 20 |[39m   })[0m
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:17:31)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.425 s
+Ran all test suites related to changed files.
+
+  console.log
+    {
+      ingredients: { ingredients: [], isIngredientsLoading: false, error: null },
+      burgerConstructor: {
+        constructorItems: { bun: null, ingredients: [] },
+        orderRequest: false,
+        orderModalData: null
+      },
+      user: { user: null, isAuthChecked: false, isLoading: false, error: null },
+      feed: { orders: [], total: 0, totalToday: 0 },
+      order: { currentOrder: null, loading: false, error: null },
+      profile: { orders: [] }
+    }
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:7:13)
+
+FAIL src/services/reducers/index.test.tsx
+  rootReducer
+    × вызываем rootReducer и проверяем initialState (42 ms)
+
+  ● rootReducer › вызываем rootReducer и проверяем initialState
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 3
+
+      Object {
+    -   "items": Array [],
+    -   "loading": false,
+    +   "error": null,
+    +   "ingredients": Array [],
+    +   "isIngredientsLoading": false,
+      }
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m     [90m// Можно проверить начальные значения каждого слайса[39m
+    [31m[1m>[22m[39m[90m 17 |[39m     expect(state[33m.[39mingredients)[33m.[39mtoEqual({ items[33m:[39m [][33m,[39m loading[33m:[39m [36mfalse[39m })
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 18 |[39m     [90m// expect(state.constructor).toEqual({ items: [] });[39m
+     [90m 19 |[39m     [90m// expect(state.user).toEqual({ isLoggedIn: false, profile: null });[39m
+     [90m 20 |[39m   })[0m
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:17:31)
+
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.395 s
+Ran all test suites related to changed files.
+
+  console.log
+    {
+      ingredients: { ingredients: [], isIngredientsLoading: false, error: null },
+      burgerConstructor: {
+        constructorItems: { bun: null, ingredients: [] },
+        orderRequest: false,
+        orderModalData: null
+      },
+      user: { user: null, isAuthChecked: false, isLoading: false, error: null },
+      feed: { orders: [], total: 0, totalToday: 0 },
+      order: { currentOrder: null, loading: false, error: null },
+      profile: { orders: [] }
+    }
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:7:13)
+
+FAIL src/services/reducers/index.test.tsx
+  rootReducer
+    × вызываем rootReducer и проверяем initialState (40 ms)
+
+  ● rootReducer › вызываем rootReducer и проверяем initialState
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 3
+
+      Object {
+    -   "items": Array [],
+    -   "loading": false,
+    +   "error": null,
+    +   "ingredients": Array [],
+    +   "isIngredientsLoading": false,
+      }
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m     [90m// Можно проверить начальные значения каждого слайса[39m
+    [31m[1m>[22m[39m[90m 17 |[39m     expect(state[33m.[39mingredients)[33m.[39mtoEqual({ items[33m:[39m [][33m,[39m loading[33m:[39m [36mfalse[39m })
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 18 |[39m     [90m// expect(state.constructor).toEqual({ items: [] });[39m
+     [90m 19 |[39m     [90m// expect(state.user).toEqual({ isLoggedIn: false, profile: null });[39m
+     [90m 20 |[39m   })[0m
+
+      at Object.<anonymous> (src/services/reducers/index.test.tsx:17:31)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.287 s
+Ran all test suites related to changed files.
+

@@ -37,9 +37,9 @@ const ingredientSlice = createSlice({
       .addCase(fetchIngredients.rejected, (state, action) => {
         state.error = action.error.message || 'Ошибка загрузки ингредиентов';
         state.isIngredientsLoading = false;
-        console.log('Thunk rejected:', action.error);
       });
   }
 });
 
 export const ingredientsReducer = ingredientSlice.reducer;
+export { initialState as ingredientsInitialState };

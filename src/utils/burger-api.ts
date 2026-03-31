@@ -61,7 +61,7 @@ type TIngredientsResponse = TServerResponse<{
   data: TIngredient[];
 }>;
 
-type TFeedsResponse = TServerResponse<{
+export type TFeedsResponse = TServerResponse<{
   orders: TOrder[];
   total: number;
   totalToday: number;
@@ -160,7 +160,10 @@ type TAuthResponse = TServerResponse<{
   accessToken: string;
   user: TUser;
 }>;
-
+type TAuthError = {
+  success: false;
+  message?: string;
+};
 export const registerUserApi = (data: TRegisterData) =>
   fetch(`${URL}/auth/register`, {
     method: 'POST',
@@ -172,7 +175,10 @@ export const registerUserApi = (data: TRegisterData) =>
     .then((res) => checkResponse<TAuthResponse>(res))
     .then((data) => {
       if (data?.success) return data;
-      return Promise.reject(data);
+      return Promise.reject({
+        success: false,
+        message: 'Registration failed'
+      } as TAuthError);
     });
 
 export type TLoginData = {
