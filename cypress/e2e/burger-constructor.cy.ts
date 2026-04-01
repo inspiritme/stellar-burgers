@@ -1,3 +1,5 @@
+import { SELECTORS as $ } from "cypress/support/selectors";
+
 describe('Конструктор бургеров', () => {
   
   beforeEach(() => {
@@ -12,18 +14,18 @@ describe('Конструктор бургеров', () => {
   })
 
   it('Добавление ингредиента в конструктор', () => {
-    cy.get('[data-testid=bun-2]').contains('Добавить').click();
-    cy.get('[data-testid=main-1]').contains('Добавить').click();
-    cy.get('[data-testid=sauce-1]').contains('Добавить').click();
-    cy.get('[data-testid=main-2]').contains('Добавить').click();
+    cy.get($.ingredients.bun2).contains('Добавить').click();
+    cy.get($.ingredients.main1).contains('Добавить').click();
+    cy.get($.ingredients.sauce1).contains('Добавить').click();
+    cy.get($.ingredients.main2).contains('Добавить').click();
 
-    cy.get('.constructor-element').first().contains('bun-2').should('exist');
-    cy.get('.constructor-element').last().contains('bun-2').should('exist');
-    cy.get('.constructor-element').eq(1).contains('main-1').should('exist');
-    cy.get('.constructor-element').eq(2).contains('sauce-1').should('exist');
-    cy.get('.constructor-element').eq(3).contains('main-2').should('exist');
+    cy.get($.ingredients.element).first().contains('bun-2').should('exist');
+    cy.get($.ingredients.element).last().contains('bun-2').should('exist');
+    cy.get($.ingredients.element).eq(1).contains('main-1').should('exist');
+    cy.get($.ingredients.element).eq(2).contains('sauce-1').should('exist');
+    cy.get($.ingredients.element).eq(3).contains('main-2').should('exist');
 
-    cy.get('.constructor-element').should('have.length', 5);
+    cy.get($.ingredients.element).should('have.length', 5);
   })
 
   it('Удаление ингредиента из конструктора', () => {
@@ -47,13 +49,10 @@ describe('Конструктор бургеров', () => {
         expect(response.order.number).to.equal(3333);
     });
 
-    const modal = '[data-testid=modal]';
-    const modalCloseBtn = '[data-testid=modal-close-btn]';
+    cy.get($.modal).should('exist');
+    cy.get($.modalCloseBtn).click();
+    cy.get($.modal).should('not.exist');
 
-    cy.get(`${modal}`).should('exist');
-    cy.get(`${modalCloseBtn}`).click();
-    cy.get(`${modal}`).should('not.exist');
-
-    cy.get('.constructor-element').should('have.length', 0);
+    cy.get($.ingredients.element).should('have.length', 0);
   })
 })
