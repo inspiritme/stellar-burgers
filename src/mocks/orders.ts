@@ -1,0 +1,111 @@
+import { TOrder } from '@utils-types';
+
+export const MOCK_ORDER_1: TOrder = {
+  _id: '69c83dfba64177001b330cfb',
+  ingredients: [
+    '643d69a5c3f7b9001cfa093d',
+    '643d69a5c3f7b9001cfa0941',
+    '643d69a5c3f7b9001cfa0946',
+    '643d69a5c3f7b9001cfa0942',
+    '643d69a5c3f7b9001cfa093d',
+  ],
+  status: 'done',
+  name: 'Био-марсианский spicy флюоресцентный минеральный бургер',
+  createdAt: '2026-03-28T20:45:47.089Z',
+  updatedAt: '2026-03-28T20:45:47.323Z',
+  number: 103347,
+};
+
+export const MOCK_ORDER_2: TOrder = {
+  _id: '69c7cf32a64177001b330cc4',
+  ingredients: [
+    '643d69a5c3f7b9001cfa093d',
+    '643d69a5c3f7b9001cfa093e',
+    '643d69a5c3f7b9001cfa093d',
+  ],
+  status: 'done',
+  name: 'Флюоресцентный люминесцентный бургер',
+  createdAt: '2026-03-28T12:53:06.310Z',
+  updatedAt: '2026-03-28T12:53:06.577Z',
+  number: 103346,
+};
+
+export const MOCK_ORDERS: TOrder[] = [MOCK_ORDER_1, MOCK_ORDER_2];
+
+export const MOCK_ORDER_RESPONSE = {
+  success: true,
+  name: 'Био-марсианский spicy краторный бургер',
+  order: {
+    _id: '69cc1cada64177001b33121f',
+    ingredients: [
+      {
+        _id: '643d69a5c3f7b9001cfa093c',
+        name: 'bun-1',
+        type: 'bun',
+        proteins: 80,
+        fat: 24,
+        carbohydrates: 53,
+        calories: 420,
+        price: 1255,
+        image: 'https://code.s3.yandex.net/react/code/bun-02.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
+        __v: 0,
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa0941',
+        name: 'main-1',
+        type: 'main',
+        proteins: 420,
+        fat: 142,
+        carbohydrates: 242,
+        calories: 4242,
+        price: 424,
+        image: 'https://code.s3.yandex.net/react/code/meat-01.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/meat-01-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/meat-01-large.png',
+        __v: 0,
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa0942',
+        name: 'sauce-1',
+        type: 'sauce',
+        proteins: 30,
+        fat: 20,
+        carbohydrates: 40,
+        calories: 30,
+        price: 90,
+        image: 'https://code.s3.yandex.net/react/code/sauce-02.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/sauce-02-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/sauce-02-large.png',
+        __v: 0,
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa093c',
+        name: 'bun-1',
+        type: 'bun',
+        proteins: 80,
+        fat: 24,
+        carbohydrates: 53,
+        calories: 420,
+        price: 1255,
+        image: 'https://code.s3.yandex.net/react/code/bun-02.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
+        __v: 0,
+      },
+    ],
+    owner: {
+      name: 'Adilet',
+      email: 'adletkoshanov@gmail.com',
+      createdAt: '2026-03-20T03:13:14.867Z',
+      updatedAt: '2026-03-31T07:04:56.492Z',
+    },
+    status: 'done',
+    name: 'Био-марсианский spicy краторный бургер',
+    createdAt: '2026-03-31T19:12:45.854Z',
+    updatedAt: '2026-03-31T19:12:46.077Z',
+    number: 3333,
+    price: 3024,
+  },
+};

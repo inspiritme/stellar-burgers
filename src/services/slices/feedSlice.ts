@@ -31,3 +31,4 @@ const feedSlice = createSlice({
 });
 
 export const feedReducer = feedSlice.reducer;
+export { initialState as feedInitialState };

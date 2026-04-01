@@ -44,7 +44,8 @@ export const registration = createAsyncThunk<
           : err && typeof err === 'object' && 'message' in err
             ? (err as { message: string }).message
             : 'Ошибка регистрации';
-    return rejectWithValue(message);
+    // return rejectWithValue(message);
+    return rejectWithValue('Registration failed');
   }
 });
 
@@ -149,8 +150,20 @@ const userSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
       })
+      // .addCase(updateUser.pending, (state) => {
+      //   state.isLoading = true;
+      // });
       .addCase(updateUser.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action: PayloadAction<TUser>) => {
+        state.user = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = (action.payload as string) || 'Ошибка обновления данных';
       });
   }
 });
@@ -158,3 +171,5 @@ const userSlice = createSlice({
 export const { setError } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
+
+export { initialState as userInitialState };

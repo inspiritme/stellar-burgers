@@ -1,26 +1,28 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { TConstructorIngredient } from '@utils-types';
-import { orderBurgerApi, TNewOrderResponse } from '@api';
-
+import { TConstructorIngredient, TOrder } from '@utils-types';
+import { orderBurgerApi, TNewOrderResponse, TNewOrder } from '@api';
 interface ConstructorState {
   constructorItems: {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
   };
   orderRequest: boolean;
-  orderModalData: any | null;
+  orderModalData: TNewOrder | null;
 }
 
 export const burgerOrder = createAsyncThunk<
   TNewOrderResponse,
   string[],
-  { rejectValue: TNewOrderResponse }
+  { rejectValue: { error: string } }
 >('constructor/burderOrder', async (ingredients, { rejectWithValue }) => {
+  if (!ingredients.length) {
+    return rejectWithValue({ error: 'Добавьте ингредиенты' });
+  }
   try {
     const res = await orderBurgerApi(ingredients);
     return res;
   } catch (err) {
-    return rejectWithValue(err as TNewOrderResponse);
+    return rejectWithValue({ error: 'Сетевая ошибка' });
   }
 });
 
@@ -75,14 +77,14 @@ const constructorSlice = createSlice({
       }
     }
   },
-  extraReducers: (buider) => {
-    buider
+  extraReducers: (builder) => {
+    builder
       .addCase(burgerOrder.pending, (state) => {
         state.orderRequest = true;
       })
       .addCase(burgerOrder.fulfilled, (state, action) => {
         state.orderRequest = false;
-        state.orderModalData = { number: action.payload.order.number };
+        state.orderModalData = action.payload?.order || null;
       })
       .addCase(burgerOrder.rejected, (state) => {
         state.orderRequest = false;
@@ -103,3 +105,4 @@ export const {
 } = constructorSlice.actions;
 
 export const constructorReducer = constructorSlice.reducer;
+export { initialState as constructorInitialState };

@@ -10,6 +10,7 @@ export type TIngredient = {
   image: string;
   image_large: string;
   image_mobile: string;
+  'data-testid'?: string;
 };
 
 export type TConstructorIngredient = TIngredient & {

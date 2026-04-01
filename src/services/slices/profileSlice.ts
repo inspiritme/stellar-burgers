@@ -25,3 +25,4 @@ const profileSlice = createSlice({
 });
 
 export const profileReducer = profileSlice.reducer;
+export { initialState as profileInitialState };
